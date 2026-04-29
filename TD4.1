@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef int element_type;
+
+struct tree_node {
+    element_type element;
+    struct tree_node *left;
+    struct tree_node *right;
+};
+typedef struct tree_node* SEARCH_TREE;
+
+// Insertion
+SEARCH_TREE insert(element_type x, SEARCH_TREE T) {
+    if (T == NULL) {
+        T = (SEARCH_TREE) malloc(sizeof(struct tree_node));
+        if (!T) { printf("Erreur allocation\n"); exit(1); }
+        T->element = x;
+        T->left = T->right = NULL;
+    } else if (x <= T->element) {
+        T->left = insert(x, T->left);
+    } else {
+        T->right = insert(x, T->right);
+    }
+    return T;
+}
+
+// Recherche
+SEARCH_TREE RechercherElement(SEARCH_TREE A, element_type e) {
+    if (A == NULL) return NULL;
+    if (e == A->element) return A;
+    else if (e > A->element) return RechercherElement(A->right, e);
+    else return RechercherElement(A->left, e);
+}
+
+// Nombre d’occurrences
+void NombreOccurences(SEARCH_TREE A, element_type e, int *nombre) {
+    if (A != NULL) {
+        NombreOccurences(A->left, e, nombre);
+        if (A->element == e) (*nombre)++;
+        NombreOccurences(A->right, e, nombre);
+    }
+}
+
+// Parcours infixe
+void ParcoursInfixeArbre(SEARCH_TREE A) {
+    if (A != NULL) {
+        ParcoursInfixeArbre(A->left);
+        printf("%d ", A->element);
+        ParcoursInfixeArbre(A->right);
+    }
+}
