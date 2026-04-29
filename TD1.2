@@ -1,0 +1,28 @@
+typedef struct {
+    int hh;
+    int mm;
+    int ss;
+} Heure;
+
+int HeureEnSecondes(Heure h) {
+    return h.hh*3600 + h.mm*60 + h.ss;
+}
+
+Heure SecondesEnHeure(int sec) {
+    Heure h;
+    h.hh = sec / 3600;
+    sec = sec % 3600;
+    h.mm = sec / 60;
+    sec = sec % 60;
+    h.ss = sec;
+    return h;
+}
+
+Heure AddHeures(Heure h1, Heure h2) {
+    return SecondesEnHeure(HeureEnSecondes(h1) + HeureEnSecondes(h2));
+}
+
+Heure DiffHeures(Heure h1, Heure h2) {
+    int diff = abs(HeureEnSecondes(h1) - HeureEnSecondes(h2));
+    return SecondesEnHeure(diff);
+}
