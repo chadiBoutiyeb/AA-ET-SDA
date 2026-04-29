@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Element {
+    int val;
+    struct Element *suivant;
+};
+typedef struct Element LISTE;
+
+void DestructionListe(LISTE **L) {
+    LISTE *ptr;
+    while (*L != NULL) {
+        ptr = *L;
+        *L = (*L)->suivant;
+        free(ptr);
+    }
+}
