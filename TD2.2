@@ -1,0 +1,11 @@
+int MiniMax(int tab[n][m]) {
+    int minimax, max;
+    for(int i=0; i<n; i++) {
+        max = tab[i][0];
+        for(int j=1; j<m; j++) {
+            if(tab[i][j] > max) max = tab[i][j];
+        }
+        if(i==0 || minimax > max) minimax = max;
+    }
+    return minimax;
+}
