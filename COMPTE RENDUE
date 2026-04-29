@@ -1,0 +1,90 @@
+TD1 – Structures
+Exercice 1 : Structure Point
+Objectif : Manipuler une structure représentant un point (x, y).
+Travail réalisé : Définition de la structure, fonctions de saisie, affichage, calcul de distance et tri d’un tableau de points.
+Résultat : Bonne maîtrise des structures et des tableaux (statique/dynamique).
+Conclusion : Les structures permettent d’organiser des données complexes et le tri introduit la notion de complexité O(n²).
+
+Exercice 2 : Structure Heure
+
+Objectif : Manipuler le temps (hh:mm).
+Travail réalisé : Conversion heure ↔ secondes, addition et différence.
+Résultat : Compréhension des transformations de données.
+Conclusion : Importance des conversions pour simplifier les calculs.
+
+
+TD2 – Complexité et Récursivité
+Exercice 1 : Minimum
+Objectif : Trouver l’indice du minimum.
+Travail : Parcours du tableau.
+Résultat : Algorithme linéaire.
+Conclusion : Complexité O(n).
+
+Exercice 2 : MiniMax
+
+Objectif : Trouver le minimum des maximums.
+Travail : Double parcours (lignes + colonnes).
+Résultat : Algorithme imbriqué.
+Conclusion : Complexité O(n×m).
+
+Exercice 3 : Récursivité
+
+Objectif : Calcul de puissance et somme.
+Travail : Version simple et optimisée.
+Résultat : Différence entre O(n) et O(log n).
+Conclusion : L’optimisation réduit fortement le coût.
+
+Exercice 4 : Analyse de fonctions
+
+Objectif : Étudier rec1 et rec2.
+Résultat : rec1 → O(n), rec2 → O(2ⁿ).
+Conclusion : Certaines récursions sont très coûteuses.
+
+
+ TD3 – Listes, Piles, Files
+Exercice 1 : Création liste
+
+Objectif : Construire une liste chaînée.
+Résultat : Insertion rapide O(1).
+
+Exercice 2 : Recherche
+
+Résultat : Parcours complet → O(n).
+
+Exercice 3 : Suppression minimum
+
+Résultat : Recherche + suppression → O(n).
+
+Exercice 4 : Fusion de listes
+
+Résultat : Combinaison de deux listes → O(n+m).
+
+Exercice 5 : Destruction
+
+Résultat : Libération mémoire → O(n).
+
+Exercice 6 : Piles
+
+Résultat : Push/Pop efficaces → O(1).
+
+Exercice 7 : Files + Palindrome
+
+Résultat : Vérification en O(n).
+
+Conclusion TD3 : Les structures dynamiques sont puissantes mais souvent nécessitent des parcours complets.
+
+
+ TD4 – Arbres Binaires de Recherche
+Exercice 1 : ABR (insertion, recherche, parcours)
+
+Objectif : Manipuler un arbre binaire.
+Résultat : Parcours trié (infixe).
+Conclusion : Complexité moyenne O(log n).
+
+Exercice 2 : Vérification ABR
+
+Résultat : Parcours complet → O(n).
+
+Exercice 3 : Minimum dans ABR
+
+Résultat : Descente à gauche → O(log n).
