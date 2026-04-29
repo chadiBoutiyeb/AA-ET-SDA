@@ -1,0 +1,69 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct stack {
+    int data;
+    struct stack *next;
+} STACK;
+
+// Empiler
+void push(STACK **head, int value) {
+    STACK *node = (STACK*) malloc(sizeof(STACK));
+    if (!node) { printf("Erreur allocation\n"); exit(1); }
+    node->data = value;
+    node->next = *head;
+    *head = node;
+}
+
+// Dépiler
+int pop(STACK **head) {
+    if (*head == NULL) {
+        printf("Erreur : pile vide\n");
+        return -1;
+    }
+    STACK *top = *head;
+    int val = top->data;
+    *head = top->next;
+    free(top);
+    return val;
+}
+
+// PairImpair : séparer pairs et impairs
+STACK* PairImpair(STACK *P1) {
+    STACK *P2 = NULL, *P3 = NULL;
+    int val;
+    while (P1) {
+        val = pop(&P1);
+        if (val % 2 == 0) push(&P2, val);
+        else push(&P3, val);
+    }
+    while (P3) {
+        val = pop(&P3);
+        push(&P2, val);
+    }
+    return P2;
+}
+
+// Affichage pile
+void AffichePile(STACK *P) {
+    while (P) {
+        printf("%d\t", P->data);
+        P = P->next;
+    }
+    printf("\n");
+}
+
+// Exemple main
+int main() {
+    STACK *P1 = NULL, *P2 = NULL;
+    for (int i=1; i<=10; i++) push(&P1, i);
+
+    printf("Pile P1 : ");
+    AffichePile(P1);
+
+    P2 = PairImpair(P1);
+    printf("Pile P2 (pairs en bas, impairs en haut) : ");
+    AffichePile(P2);
+
+    return 0;
+}
