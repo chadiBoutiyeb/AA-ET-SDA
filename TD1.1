@@ -1,35 +1,35 @@
 typedef struct {
-int abs;
-int ord;
+    int abs;
+    int ord;
 } Point;
 
 Point SaisirPoint() {
-Point p;
-printf("Donner les coordonnées du point : ");
-scanf("%d%d", &p.abs, &p.ord);
-return p;
+    Point p;
+    printf("Donner les coordonnées du point : ");
+    scanf("%d%d", &p.abs, &p.ord);
+    return p;
 }
 
 void AfficherPoint(Point p) {
-printf("(%d,%d)\n", p.abs, p.ord);
+    printf("(%d,%d)\n", p.abs, p.ord);
 }
 
 float distance(Point p) {
-return sqrt(p.abs * p.abs + p.ord * p.ord);
+    return sqrt(p.abs * p.abs + p.ord * p.ord);
 }
 
 float distancePtr(Point* p) {
-return sqrt(p->abs * p->abs + p->ord * p->ord);
+    return sqrt(p->abs * p->abs + p->ord * p->ord);
 }
 
 void tritab(Point t[], int taille) {
-int i, j;
-Point aux;
-for(i=0; i<taille-1; i++)
-for(j=i+1; j<taille; j++)
-if(distance(t[i]) > distance(t[j])) {
-aux = t[i];
-t[i] = t[j];
-t[j] = aux;
-}
+    int i, j;
+    Point aux;
+    for(i=0; i<taille-1; i++)
+        for(j=i+1; j<taille; j++)
+            if(distance(t[i]) > distance(t[j])) {
+                aux = t[i];
+                t[i] = t[j];
+                t[j] = aux;
+            }
 }
