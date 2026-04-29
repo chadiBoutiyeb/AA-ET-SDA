@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Element {
+    int val;
+    struct Element *suivant;
+};
+typedef struct Element LISTE;
+
+int RechercherValeur(LISTE *L, int valeur) {
+    LISTE *ptr = L;
+    while (ptr) {
+        if (ptr->val == valeur) return 1; // trouvé
+        ptr = ptr->suivant;
+    }
+    return 0; // non trouvé
+}
