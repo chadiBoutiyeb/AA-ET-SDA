@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef int element_type;
+
+struct tree_node {
+    element_type element;
+    struct tree_node *left;
+    struct tree_node *right;
+};
+typedef struct tree_node* SEARCH_TREE;
+
+// Fonction d’insertion (utile pour tester)
+SEARCH_TREE insert(element_type x, SEARCH_TREE T) {
+    if (T == NULL) {
+        T = (SEARCH_TREE) malloc(sizeof(struct tree_node));
+        if (!T) { printf("Erreur allocation\n"); exit(1); }
+        T->element = x;
+        T->left = T->right = NULL;
+    } else if (x <= T->element) {
+        T->left = insert(x, T->left);
+    } else {
+        T->right = insert(x, T->right);
+    }
+    return T;
+}
+
+// Exercice 3 : chercher le plus petit élément
+int LePlusPetit(SEARCH_TREE A) {
+    if (A == NULL) {
+        printf("Erreur : arbre vide\n");
+        return -1; // valeur spéciale
+    }
+    while (A->left != NULL) {
+        A = A->left;
+    }
+    return A->element;
+}
+
+// Programme principal pour tester
+int main() {
+    SEARCH_TREE A = NULL;
+
+    // Création d’un arbre
+    A = insert(50, A);
+    A = insert(30, A);
+    A = insert(70, A);
+    A = insert(20, A);
+    A = insert(40, A);
+
+    // Test Exercice 3
+    int minVal = LePlusPetit(A);
+    if (minVal != -1)
+        printf("Le plus petit élément est : %d\n", minVal);
+
+    return 0;
+}
