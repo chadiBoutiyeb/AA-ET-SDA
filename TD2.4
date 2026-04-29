@@ -1,0 +1,9 @@
+int rec1(int n) {
+    if(n==0) return 1;
+    else return 2 * rec1(n-1);
+}
+
+int rec2(int n) {
+    if(n==0) return 1;
+    else return rec2(n-1) + rec2(n-1);
+}
