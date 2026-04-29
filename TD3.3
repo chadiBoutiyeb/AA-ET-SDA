@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Element {
+    int val;
+    struct Element *suivant;
+};
+typedef struct Element LISTE;
+
+int SuppressionValeurMin(LISTE **L) {
+    if (*L == NULL) return 0; // liste vide
+
+    LISTE *ptr = *L, *pMinPrec = NULL, *pPrec = NULL;
+    LISTE *pMin = *L;
+    int minim = ptr->val;
+
+    // Chercher le minimum
+    while (ptr) {
+        if (ptr->val < minim) {
+            minim = ptr->val;
+            pMin = ptr;
+            pMinPrec = pPrec;
+        }
+        pPrec = ptr;
+        ptr = ptr->suivant;
+    }
+
+    // Suppression
+    if (pMinPrec == NULL) { // min au début
+        *L = (*L)->suivant;
+    } else {
+        pMinPrec->suivant = pMin->suivant;
+    }
+    free(pMin);
+    return 1;
+}
