@@ -1,0 +1,18 @@
+// Version simple
+int puissance(int a, int i) {
+    if(i==0) return 1;
+    else return a * puissance(a, i-1);
+}
+
+// Version rapide
+int expRapide(int a, int i) {
+    if(i==0) return 1;
+    else if(i%2==0) return expRapide(a*a, i/2);
+    else return a * expRapide(a*a, i/2);
+}
+
+// Somme
+int somme(int a, int n) {
+    if(n==0) return 1;
+    else return puissance(a,n) + somme(a,n-1);
+}
