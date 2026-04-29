@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Element {
+    int val;
+    struct Element *suivant;
+};
+typedef struct Element LISTE;
+
+void InsererElementEnFin(LISTE **L, int valeur) {
+    LISTE *nouveau = (LISTE*) malloc(sizeof(LISTE));
+    if (!nouveau) { printf("Erreur allocation\n"); exit(1); }
+    nouveau->val = valeur;
+    nouveau->suivant = NULL;
+
+    if (*L == NULL) *L = nouveau;
+    else {
+        LISTE *ptr = *L;
+        while (ptr->suivant) ptr = ptr->suivant;
+        ptr->suivant = nouveau;
+    }
+}
+
+LISTE* FusionDe2ListesAlternance(LISTE *L1, LISTE *L2) {
+    LISTE *res = NULL;
+    while (L1 && L2) {
+        InsererElementEnFin(&res, L1->val);
+        InsererElementEnFin(&res, L2->val);
+        L1 = L1->suivant;
+        L2 = L2->suivant;
+    }
+    while (L1) { InsererElementEnFin(&res, L1->val); L1 = L1->suivant; }
+    while (L2) { InsererElementEnFin(&res, L2->val); L2 = L2->suivant; }
+    return res;
+}
+
+void AfficheListe(LISTE *L) {
+    while (L) {
+        printf("%d -> ", L->val);
+        L = L->suivant;
+    }
+    printf("NULL\n");
+}
